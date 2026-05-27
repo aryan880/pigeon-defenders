@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build": "mkdir -p public && cp *.html *.css *.js robots.txt sitemap.xml public/"
+  },
+  "dependencies": {}
+}
