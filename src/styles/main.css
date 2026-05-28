@@ -898,25 +898,6 @@ main > section:nth-of-type(odd):not(.hero):not(.cta):not(.service-hero) {
   .quote-panel { padding: 22px; }
   .sticky-mobile { display: flex; }
   body { padding-bottom: 74px; }
-  .top-strip::after,
-  .cta::after {
-    display: none;
-  }
-  .hero .eyebrow,
-  .hero h1,
-  .hero p,
-  .hero-actions,
-  .badges,
-  .sticky-mobile {
-    animation: none;
-  }
-  .btn,
-  .badge,
-  .card,
-  .gallery-item img,
-  .feature-photo img {
-    transition: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
