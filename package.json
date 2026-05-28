@@ -2,5 +2,7 @@
   "scripts": {
     "build": "mkdir -p dist && cp *.html *.css *.js robots.txt sitemap.xml dist/ && cp -R public/* dist/"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
 }
