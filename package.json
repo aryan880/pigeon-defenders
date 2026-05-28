@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "mkdir -p dist && cp *.html *.css *.js robots.txt sitemap.xml dist/ && cp -R public/* dist/"
+    "build": "rm -rf dist && mkdir -p dist && cp *.html *.css *.js robots.txt sitemap.xml dist/ && cp -R public/* dist/"
   },
   "dependencies": {}
 }

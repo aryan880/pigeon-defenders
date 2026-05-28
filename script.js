@@ -36,13 +36,14 @@ if (header) {
 const revealTargets = document.querySelectorAll(
   ".section-head, .proof-strip > *, .card, .problem-copy, .problem-card, .gallery-item, .quote-flow-grid > *, .quote-points span, .split > *, .step, .areas span, details, .quote-panel, .cta .wrap, .service-hero .wrap > *"
 );
+const canAnimateReveals = window.matchMedia("(min-width: 701px) and (prefers-reduced-motion: no-preference)").matches;
 
-revealTargets.forEach((element, index) => {
-  element.classList.add("reveal");
-  element.style.setProperty("--reveal-delay", `${Math.min(index % 5, 4) * 70}ms`);
-});
+if (canAnimateReveals && "IntersectionObserver" in window) {
+  revealTargets.forEach((element, index) => {
+    element.classList.add("reveal");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 45}ms`);
+  });
 
-if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -50,11 +51,9 @@ if ("IntersectionObserver" in window) {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
+  }, { threshold: 0.12, rootMargin: "0px 0px -28px 0px" });
 
   revealTargets.forEach((element) => observer.observe(element));
-} else {
-  revealTargets.forEach((element) => element.classList.add("is-visible"));
 }
 
 document.querySelectorAll(".faq-list details").forEach((detail) => {
