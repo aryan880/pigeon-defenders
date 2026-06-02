@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 const root = process.cwd();
 const dist = join(root, "dist");
-const assetVersion = "20260602c";
+const assetVersion = "20260602d";
 
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });

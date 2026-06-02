@@ -181,25 +181,33 @@ a { color: inherit; text-decoration: none; }
 .btn:hover::after { translate: 130% 0; }
 .btn:active { transform: translateY(0) scale(.99); }
 .btn-primary {
-  background:
-    linear-gradient(180deg, #dff879 0%, #b9e457 100%);
-  color: #102008;
-  border-color: rgba(65,105,17,.24);
+  background: #b9e457;
+  color: #07172c;
+  border-color: #9fc63d;
   box-shadow:
-    0 12px 24px rgba(169,216,79,.28),
-    0 3px 8px rgba(7,23,44,.08),
-    inset 0 1px 0 rgba(255,255,255,.62),
-    inset 0 -1px 0 rgba(65,105,17,.18);
+    0 12px 24px rgba(169,216,79,.26),
+    0 3px 8px rgba(7,23,44,.1);
 }
 .btn-primary:hover {
-  background:
-    linear-gradient(180deg, #e8ff8e 0%, #b6dd50 100%);
-  border-color: rgba(65,105,17,.32);
+  background: #c9ef5a;
+  color: #07172c;
+  border-color: #a9d84f;
   box-shadow:
-    0 16px 32px rgba(169,216,79,.34),
-    0 5px 12px rgba(7,23,44,.1),
-    inset 0 1px 0 rgba(255,255,255,.72),
-    inset 0 -1px 0 rgba(65,105,17,.22);
+    0 16px 32px rgba(169,216,79,.32),
+    0 5px 12px rgba(7,23,44,.12);
+}
+.btn-primary::before,
+.btn-primary::after {
+  display: none;
+}
+.hero .btn-primary,
+.cta .btn-primary,
+.solution-finder .btn-primary,
+.sticky-mobile .btn-primary {
+  background: #b9e457;
+  color: #07172c;
+  border-color: #9fc63d;
+  text-shadow: none;
 }
 .btn-dark {
   background:
