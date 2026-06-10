@@ -1,11 +1,16 @@
 {
   "outputDirectory": "dist",
-  "cleanUrls": true,
   "redirects": [
     {
       "source": "/:page.html",
       "destination": "/:page",
       "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:page",
+      "destination": "/:page.html"
     }
   ],
   "headers": [
