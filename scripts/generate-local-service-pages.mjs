@@ -7,8 +7,8 @@ const sitemapPath = join(root, "public/sitemap.xml");
 const site = "https://pigeondefenders.ca";
 const phone = "236-999-5739";
 const tel = "+12369995739";
-const email = "support@pigeondefenders.ca";
-const lastmod = "2026-06-01";
+const email = "info@pigeondefenders.ca";
+const lastmod = "2026-06-02";
 
 const cities = [
   { name: "Vancouver", slug: "vancouver", context: "downtown condos, older walk-up apartments, strata towers, storefront signs, and rooflines near busy commercial streets", note: "Vancouver properties often need discreet work because balconies, signs, ledges, and shared entrances are highly visible." },
@@ -147,23 +147,23 @@ const services = [
 ];
 
 const serviceNav = [
-  ["Bird Netting", "balcony-bird-netting.html"],
-  ["Pigeon Spikes", "pigeon-spike-installation.html"],
-  ["Balcony Cleaning", "balcony-cleaning.html"],
-  ["Pet Netting", "pet-cat-netting.html"],
-  ["Areas", "service-areas.html"],
-  ["Contact", "contact.html"],
+  ["Bird Netting", "/balcony-bird-netting"],
+  ["Pigeon Spikes", "/pigeon-spike-installation"],
+  ["Balcony Cleaning", "/balcony-cleaning"],
+  ["Pet Netting", "/pet-cat-netting"],
+  ["Areas", "/service-areas"],
+  ["Contact", "/contact"],
 ];
 
 const coreUrls = [
   ["/", "1.0", "weekly"],
-  ["/balcony-bird-netting.html", "0.9", "monthly"],
-  ["/pigeon-spike-installation.html", "0.9", "monthly"],
-  ["/balcony-cleaning.html", "0.8", "monthly"],
-  ["/pet-cat-netting.html", "0.8", "monthly"],
-  ["/commercial-bird-control.html", "0.9", "monthly"],
-  ["/service-areas.html", "0.7", "monthly"],
-  ["/contact.html", "0.7", "monthly"],
+  ["/contact", "0.8", "monthly"],
+  ["/balcony-bird-netting", "0.9", "monthly"],
+  ["/pigeon-spike-installation", "0.9", "monthly"],
+  ["/balcony-cleaning", "0.8", "monthly"],
+  ["/commercial-bird-control", "0.9", "monthly"],
+  ["/pet-cat-netting", "0.8", "monthly"],
+  ["/service-areas", "0.7", "monthly"],
 ];
 
 const escapeHtml = (value) => String(value)
@@ -185,11 +185,11 @@ const headerHtml = (topText) => `
   <header class="site-header"><div class="wrap nav"><a class="logo" href="/"><img src="images/pigeon-defenders-logo.webp" alt="Pigeon Defenders logo" width="420" height="231" decoding="async" fetchpriority="high"></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links" aria-label="Primary navigation">${navHtml}</nav><a class="btn btn-primary desktop-cta" href="tel:${tel}">Call or Text ${phone}</a></div></header>`;
 
 const footerHtml = `
-  <footer class="site-footer"><div class="wrap footer-grid"><div><img class="footer-logo" src="images/pigeon-defenders-logo.webp" alt="Pigeon Defenders logo" width="420" height="231" decoding="async" loading="lazy"><p>Smart solutions. Lasting results. Protect your home. Protect our community.</p></div><div><h3>Services</h3><a href="balcony-bird-netting.html">Balcony Bird Netting</a><a href="pigeon-spike-installation.html">Pigeon Spikes</a><a href="balcony-cleaning.html">Balcony Cleaning</a><a href="pet-cat-netting.html">Pet & Cat Netting</a></div><div><h3>Company</h3><a href="commercial-bird-control.html">Commercial</a><a href="service-areas.html">Areas</a><a href="contact.html">Contact</a></div><div><h3>Contact</h3><p><a href="tel:${tel}">${phone}</a></p><p><a href="mailto:${email}">${email}</a></p></div></div></footer>
+  <footer class="site-footer"><div class="wrap footer-grid"><div><img class="footer-logo" src="images/pigeon-defenders-logo.webp" alt="Pigeon Defenders logo" width="420" height="231" decoding="async" loading="lazy"><p>Smart solutions. Lasting results. Protect your home. Protect our community.</p></div><div><h3>Services</h3><a href="/balcony-bird-netting">Balcony Bird Netting</a><a href="/pigeon-spike-installation">Pigeon Spikes</a><a href="/balcony-cleaning">Balcony Cleaning</a><a href="/pet-cat-netting">Pet & Cat Netting</a></div><div><h3>Company</h3><a href="/commercial-bird-control">Commercial</a><a href="/service-areas">Areas</a><a href="/service-areas">Vancouver</a><a href="/service-areas">Burnaby</a><a href="/service-areas">Richmond</a><a href="/contact">Contact</a></div><div><h3>Contact</h3><p><a href="tel:${tel}">${phone}</a></p><p><a href="mailto:${email}">${email}</a></p></div></div></footer>
   <div class="sticky-mobile"><a class="btn btn-dark" href="sms:2369995739">Text</a><a class="btn btn-primary" href="tel:${tel}">Call</a></div><script src="script.js" defer></script>`;
 
 function linkFor(page) {
-  return `${page.slug}.html`;
+  return `/${page.slug}`;
 }
 
 function relatedLinks(current) {
@@ -214,7 +214,7 @@ function jsonScript(data) {
 
 function pageHtml(page) {
   const { city, service, slug } = page;
-  const canonical = `${site}/${slug}.html`;
+  const canonical = `${site}/${slug}`;
   const related = relatedLinks(page);
   const title = service.titleTag(city.name);
   const desc = service.desc(city.name);
@@ -252,7 +252,7 @@ function pageHtml(page) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
-      { "@type": "ListItem", position: 2, name: "Service Areas", item: `${site}/service-areas.html` },
+      { "@type": "ListItem", position: 2, name: "Service Areas", item: `${site}/service-areas` },
       { "@type": "ListItem", position: 3, name: service.h1(city.name), item: canonical },
     ],
   };
@@ -262,7 +262,7 @@ function pageHtml(page) {
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(title)}</title>
-  <link rel="shortcut icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=3"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
+  <link rel="shortcut icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=4"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4">
   <meta name="description" content="${escapeHtml(desc)}">
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="website">
@@ -282,7 +282,7 @@ function pageHtml(page) {
 <body class="local-service-page">
   ${headerHtml(`${service.title} in ${city.name} by Pigeon Defenders`)}
   <main>
-    <section class="service-hero"><div class="wrap"><div><span class="eyebrow">${escapeHtml(service.keyword)} ${escapeHtml(city.name)}</span><h1>${escapeHtml(service.h1(city.name))}</h1><p>${escapeHtml(paragraphs[0])}</p><div class="hero-actions"><a class="btn btn-primary" href="contact.html">Get Free Quote</a><a class="btn btn-light" href="sms:2369995739">Text Photos</a></div></div><img src="images/${service.image}" alt="${escapeHtml(service.imageAlt)} in ${escapeHtml(city.name)}" width="${service.imageWidth}" height="${service.imageHeight}" decoding="async" fetchpriority="high"></div></section>
+    <section class="service-hero"><div class="wrap"><div><span class="eyebrow">${escapeHtml(service.keyword)} ${escapeHtml(city.name)}</span><h1>${escapeHtml(service.h1(city.name))}</h1><p>${escapeHtml(paragraphs[0])}</p><div class="hero-actions"><a class="btn btn-primary" href="/contact">Get Free Quote</a><a class="btn btn-light" href="sms:2369995739">Text Photos</a></div></div><img src="images/${service.image}" alt="${escapeHtml(service.imageAlt)} in ${escapeHtml(city.name)}" width="${service.imageWidth}" height="${service.imageHeight}" decoding="async" fetchpriority="high"></div></section>
     <section><div class="wrap split"><div><span class="eyebrow">Local Service</span><h2>Built for ${escapeHtml(city.name)} properties.</h2>${paragraphs.slice(1).map((p) => `<p>${escapeHtml(p)}</p>`).join("")}</div><div><h3>Best fit for</h3><ul class="check-list">${service.benefits.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div></section>
     <section class="band"><div class="wrap split"><div><span class="eyebrow">Benefits</span><h2>Why ${escapeHtml(service.title.toLowerCase())} matters in ${escapeHtml(city.name)}.</h2><p>Bird problems become expensive when the same ledge, balcony, entrance, or sign has to be cleaned repeatedly. A proper bird proofing service reduces the reason birds return, which helps protect the space after the first visit. The right solution also makes the property easier to maintain because the system is matched to the bird behaviour and the building surface.</p><p>For ${escapeHtml(city.name)} homeowners, renters, strata councils, and commercial managers, the goal is usually a mix of comfort, appearance, and prevention. Pigeon Defenders focuses on humane methods, clean workmanship, practical quotes, and material choices that make sense for Metro Vancouver weather.</p></div><div><h3>Service benefits</h3><ul class="check-list">${service.benefits.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div></section>
     <section><div class="wrap split"><div><span class="eyebrow">Process</span><h2>Clear quote, clean installation, lasting prevention.</h2><p>${escapeHtml(service.process(city.name))}</p><p>Most quotes begin with photos. A wide photo shows the full area, while close-up photos show landing edges, droppings, corners, access, and material details. If the project needs a closer look, we explain that before recommending a final scope.</p><p>Once the plan is clear, the crew prepares the area, installs the selected system, checks gaps or landing points, and leaves the site looking tidy. When cleaning is needed, it can be planned before the bird-proofing system goes in.</p></div><div><h3>Materials used</h3><p>${escapeHtml(service.materials)}</p><h3>Why choose Pigeon Defenders</h3><ul class="check-list"><li>Local Metro Vancouver service</li><li>Humane bird control methods</li><li>Clean installation on visible surfaces</li><li>Free quotes from photos when possible</li><li>Residential, strata, and commercial support</li></ul></div></div></section>
@@ -299,10 +299,9 @@ function pageHtml(page) {
 
 function sitemapXml() {
   const core = coreUrls.map(([path, priority, changefreq]) => `  <url><loc>${site}${path}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`);
-  const local = allPages.map((page) => `  <url><loc>${site}/${page.slug}.html</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>`);
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...core, ...local].join("\n")}
+${core.join("\n")}
 </urlset>
 `;
 }

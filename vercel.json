@@ -1,5 +1,13 @@
 {
   "outputDirectory": "dist",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:page.html",
+      "destination": "/:page",
+      "statusCode": 301
+    }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",
